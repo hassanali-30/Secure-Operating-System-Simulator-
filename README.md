@@ -1,41 +1,45 @@
-# Secure Operating System Simulator 🚀
+# Secure Operating System Simulator
 
-A C++ project that simulates core OS functionalities including Hybrid CPU Scheduling, Deadlock Avoidance, Memory Management, and Secure Inter-Process Communication (IPC). Built for CS-303 Operating Systems at HITEC University.
+A C++ educational simulator for exploring operating-system scheduling, deadlock avoidance, memory management, and inter-process communication. The project was developed for the CS-303 Operating Systems course at HITEC University.
 
-## 👨‍💻 Authors
-- Hassan Ali (23-CYS-035)
-- Muneeb Ahmed (23-CYS-004)
-- Shayan Latif (23-CYS-041)
-- Syed Haider Abbas (23-CYS-038)
+## Features
 
-## 📌 Features
+- Hybrid CPU scheduling using Round Robin and SRTF concepts
+- Deadlock avoidance with Banker's Algorithm
+- Best-fit memory allocation
+- LRU paging
+- IPC examples using shared memory, semaphores, and message passing
+- Performance indicators such as waiting time, turnaround time, throughput, and CPU utilization
 
-- 🧠 **Hybrid CPU Scheduler** (Round Robin + SRTF)
-- 🔐 **Deadlock Avoidance** using Banker’s Algorithm
-- 💾 **Memory Management** with Best Fit and LRU Paging
-- 🔄 **Inter-Process Communication** (Shared Memory, Semaphores, Message Passing)
-- 📈 **Performance Metrics** (Turnaround Time, Waiting Time, Throughput, CPU Utilization)
+## Build and Run
 
-## 🗂️ Project Structure
-
-os-simulator/
-├── src/ # Source code files (.cpp)
-├── include/ # Header files (.h)
-├── Report/ # Final project report
-├── screenshots/ # Output snapshots
-├── sim_results.txt # Logged performance output
-├── Makefile or build script (optional)
-└── README.md
-
-bash
-Copy
-Edit
-
-## 🧑‍🏭 How to Compile & Run
+The project includes source files under `src/` and headers under `include/`. When the repository's source layout and build script are available, a typical Linux build is:
 
 ```bash
-# Compile
-g++ -o os_sim src/*.cpp -pthread
-
-# Run
+g++ -std=c++17 -pthread src/*.cpp -Iinclude -o os_sim
 ./os_sim
+```
+
+Adjust the command if the repository's build files use a different entry point.
+
+## Project Structure
+
+```text
+src/             # C++ source files
+include/         # Header files
+Report/          # Project report, if present
+screenshots/     # Output screenshots, if present
+sim_results.txt  # Recorded results, if present
+README.md        # Project documentation
+```
+
+## Contributors
+
+- Hassan Ali
+- Muneeb Ahmed
+- Shayan Latif
+- Syed Haider Abbas
+
+## Learning Outcomes
+
+The simulator connects operating-system theory with executable examples of scheduling, resource allocation, memory policies, and IPC.
