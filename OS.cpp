@@ -123,7 +123,7 @@ void hybridScheduler() {
     vector<bool> inQueue(processes.size(), false);
 
     while (!allDone()) {
-        for (int i = 0; i < processes.size(); ++i) {
+        for (size_t i = 0; i < processes.size(); ++i) {
             if (processes[i].arrival <= time && !processes[i].complete && !inQueue[i]) {
                 rrQ.push(i);
                 inQueue[i] = true;
@@ -146,10 +146,10 @@ void hybridScheduler() {
 
         if (useSRTF) {
             int shortest = -1;
-            for (int i = 0; i < processes.size(); i++) {
+            for (size_t i = 0; i < processes.size(); i++) {
                 if (!processes[i].complete && processes[i].arrival <= time) {
-                    if (shortest == -1 || processes[i].remaining < processes[shortest].remaining)
-                        shortest = i;
+                    if (shortest == -1 || processes[i].remaining < processes[static_cast<size_t>(shortest)].remaining)
+                        shortest = static_cast<int>(i);
                 }
             }
             if (shortest != -1) {
@@ -239,3 +239,4 @@ int main() {
     analyzePerformance();
     return 0;
 }
+
