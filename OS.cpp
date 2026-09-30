@@ -96,6 +96,10 @@ void allocateMemoryBestFit(vector<Process>& processes) {
 
 // ---------------- Performance Analysis ----------------
 void analyzePerformance() {
+    if (processes.empty()) {
+        cout << "No processes were provided; performance metrics are unavailable.\n";
+        return;
+    }
     int totalWT = 0, totalTAT = 0;
     for (const auto& p : processes) {
         totalWT += p.wait;
@@ -192,12 +196,18 @@ void hybridScheduler() {
 int main() {
     int n;
     cout << "Enter number of processes: ";
-    cin >> n;
+    if (!(cin >> n) || n <= 0) {
+        cerr << "Please enter a positive number of processes.\n";
+        return 1;
+    }
 
     for (int i = 0; i < n; i++) {
         int at, bt;
         cout << "Enter Arrival Time and Burst Time for Process " << i + 1 << ": ";
-        cin >> at >> bt;
+        if (!(cin >> at >> bt) || at < 0 || bt <= 0) {
+            cerr << "Arrival time must be non-negative and burst time must be positive.\n";
+            return 1;
+        }
         processes.push_back({i + 1, at, bt, bt});
     }
 
