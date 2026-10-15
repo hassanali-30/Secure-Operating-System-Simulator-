@@ -177,6 +177,16 @@ void hybridScheduler() {
                 processes[i].remaining -= exec;
                 time += exec;
 
+                // Jobs that arrived during this slice belong ahead of the
+                // current job when it is requeued for another round.
+                for (size_t j = 0; j < processes.size(); ++j) {
+                    if (static_cast<int>(j) != i && processes[j].arrival <= time &&
+                        !processes[j].complete && !inQueue[j]) {
+                        rrQ.push(static_cast<int>(j));
+                        inQueue[j] = true;
+                    }
+                }
+
                 if (processes[i].remaining == 0) {
                     processes[i].complete = true;
                     processes[i].finish = time;
